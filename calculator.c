@@ -2,58 +2,60 @@
 #include <stdlib.h>
 
 int main() {
-    char op;
-    double a, b, res;
     int choice;
+    double a, b, result;
 
     do {
-        printf("\n===== Simple Calculator =====\n");
+        printf("\n===== CALCULATOR MENU =====\n");
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Multiplication\n");
+        printf("4. Division\n");
+        printf("5. Exit\n");
 
-        // Input operator
-        printf("Enter operator (+, -, *, /): ");
-        scanf(" %c", &op);   // space fixes input bug
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-        // Input numbers
-        printf("Enter two numbers: ");
-        if (scanf("%lf %lf", &a, &b) != 2) {
-            printf("Invalid input!\n");
-            exit(1);
+        if (choice >= 1 && choice <= 4) {
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &a, &b);
         }
 
-        switch (op) {
-            case '+':
-                res = a + b;
-                printf("Result: %.2lf\n", res);
+        switch (choice) {
+            case 1:
+                result = a + b;
+                printf("Result = %.2lf\n", result);
                 break;
 
-            case '-':
-                res = a - b;
-                printf("Result: %.2lf\n", res);
+            case 2:
+                result = a - b;
+                printf("Result = %.2lf\n", result);
                 break;
 
-            case '*':
-                res = a * b;
-                printf("Result: %.2lf\n", res);
+            case 3:
+                result = a * b;
+                printf("Result = %.2lf\n", result);
                 break;
 
-            case '/':
+            case 4:
                 if (b == 0) {
                     printf("Error: Division by zero!\n");
                 } else {
-                    res = a / b;
-                    printf("Result: %.2lf\n", res);
+                    result = a / b;
+                    printf("Result = %.2lf\n", result);
                 }
                 break;
 
+            case 5: 
+                printf("\nThank you for using the calculator!\n");
+                printf("Exiting calculator...\n");
+                break;
+
             default:
-                printf("Invalid operator!\n");
+                printf("Invalid choice! Try again.\n");
         }
 
-        printf("\nDo you want to continue? (1 = Yes, 0 = No): ");
-        scanf("%d", &choice);
+    } while (choice != 5);
 
-    } while (choice == 1);
-
-    printf("\nThank you for using the calculator!\n");
     return 0;
 }
